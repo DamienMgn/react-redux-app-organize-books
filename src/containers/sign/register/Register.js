@@ -1,18 +1,19 @@
 import React, {Component} from 'react';
 
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import { connect } from 'react-redux'
-import { userFetchLogin } from '../../../redux/actions/authActions'
+import { userFetchRegister } from '../../../redux/actions/authActions'
 import { Form, Icon, Input, Button } from 'antd';
 import '../sign.css'
 
 
-class Login extends Component {
+class Register extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      name:'',
       email: '',
       password: ''
     }
@@ -20,7 +21,7 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.userFetchLogin(this.state);
+    this.props.userFetchRegister(this.state, this.props.history);
   }
 
   handleChange = (event) => {
@@ -33,6 +34,14 @@ class Login extends Component {
     return (
       <div className="sign">
         <Form onSubmit={this.handleSubmit} className="sign-form" method="POST">
+        <Form.Item>
+              <Input
+                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                placeholder="Username"
+                name="name"
+                onChange={this.handleChange}
+              />
+          </Form.Item>
           <Form.Item>
               <Input
                 prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -51,10 +60,10 @@ class Login extends Component {
               />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="sign-form-button">
-              Log in
+            <Button type="primary" htmlType="submit" className="login-form-button">
+              Register
             </Button>
-            Or <Link to="/register">register now!</Link>
+            Or <Link to="/login">Login!</Link>
           </Form.Item>
         </Form>
       </div>
@@ -63,7 +72,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  userFetchLogin: userInfo => dispatch(userFetchLogin(userInfo))
+  userFetchRegister: (userInfo, props) => dispatch(userFetchRegister(userInfo, props))
 })
 
-export default connect(null, mapDispatchToProps)(Login);
+export default withRouter( connect(null, mapDispatchToProps)(Register));
