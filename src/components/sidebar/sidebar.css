@@ -5,3 +5,7 @@
 .ant-layout-sider-children {
     background-color: #fff;
 }
+
+.ant-layout-sider-zero-width-trigger {
+    top: 10px !important;
+}
