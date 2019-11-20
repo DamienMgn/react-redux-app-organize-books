@@ -29,7 +29,7 @@ const Home = ({userFetchLogout}) => {
   } 
 
   return (
-  <Layout className="home">
+  <Layout className="home" theme="light">
     <Router>
       <Sidebar url={url}/>
     <Layout>

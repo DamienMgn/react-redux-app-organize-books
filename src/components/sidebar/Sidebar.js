@@ -4,6 +4,8 @@ import {
     Link,
   } from "react-router-dom";
 
+import './sidebar.css'
+
 import { Layout, Menu, Icon } from 'antd';
 
 const { Sider } = Layout;
@@ -16,7 +18,7 @@ const Sidebar = ({url}) => {
       collapsedWidth="0"
     >
       <div className="logo" />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+      <Menu className="sidebar-menu" theme="light" mode="inline" defaultSelectedKeys={['4']}>
         <Menu.Item key="4">
           <Link to={`${url}`}>
             <Icon type="user" />
