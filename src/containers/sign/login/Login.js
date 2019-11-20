@@ -33,7 +33,7 @@ class Login extends Component {
     return (
       <div className="sign">
         <Form onSubmit={this.handleSubmit} className="sign-form" method="POST">
-          <Form.Item>
+          <Form.Item className="sign-form-item">
               <Input
                 prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 placeholder="Email"
@@ -41,7 +41,7 @@ class Login extends Component {
                 onChange={this.handleChange}
               />
           </Form.Item>
-          <Form.Item>
+          <Form.Item className="sign-form-item">
               <Input
                 prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 type="password"
@@ -50,11 +50,13 @@ class Login extends Component {
                 onChange={this.handleChange}
               />
           </Form.Item>
-          <Form.Item>
+          <Form.Item className="sign-form-item">
             <Button type="primary" htmlType="submit" className="sign-form-button">
               Log in
             </Button>
-            Or <Link to="/register">register now!</Link>
+            <div>
+              Or <Link to="/register">register now!</Link>
+            </div>
           </Form.Item>
         </Form>
       </div>

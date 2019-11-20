@@ -12,7 +12,7 @@ import PrivateRouteAuth from './components/PrivateRouteAuth'
 
 import Login from './containers/sign/login/Login'
 import Register from './containers/sign/register/Register'
-import Home from './containers/Home'
+import Home from './containers/home/Home'
 import Loader from './components/loader/Loader'
 
 import './style/App.css';
@@ -53,7 +53,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  isLoading: state.isLoading
+  isLoading: state.isLoading,
+  currentUser: state.user
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

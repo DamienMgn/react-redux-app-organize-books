@@ -11,7 +11,7 @@ export const userFetchLogin = user => {
                 localStorage.setItem('token', response.data.token);
             })
             .catch(function (error) {
-              console.log(error);
+              console.log(error.response);
             }); 
     }
 }
@@ -54,6 +54,7 @@ export const userFetchIsLogged = () => {
     })
     .catch(function (error) {
       console.log(error);
+      dispatch(isLogged(null))
     });
   }
 }
