@@ -1,8 +1,14 @@
 .header {
-    height: 4rem;
+    min-height: 4rem;
     background-color: #FFF;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 1px solid #E9E9E9
+}
+
+.header-dropdown {
+    align-self: flex-end;
+    margin-right: 3rem;
 }

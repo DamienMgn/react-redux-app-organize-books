@@ -1,0 +1,17 @@
+.book-template {
+    display: flex;
+    margin: 1rem;
+    background-color: #fff;
+}
+
+.book-template-cover {
+    height: 10rem;
+    width: 7rem;
+    margin: 2rem;
+    border-radius: 2px;
+}
+
+.book-template-information {
+    margin-top: 2rem;
+    margin-right: 2rem;
+}

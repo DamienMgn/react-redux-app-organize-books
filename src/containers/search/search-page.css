@@ -1,0 +1,18 @@
+.search-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-page-search-bar {
+    max-width: 45rem;
+}
+
+.search-page-books-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}

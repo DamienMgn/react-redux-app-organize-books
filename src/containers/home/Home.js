@@ -18,9 +18,9 @@ import './home.css'
 
 import { Layout } from 'antd';
 
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 
-const Home = ({userFetchLogout}) => {
+const Home = ({userFetchLogout, currentUser}) => {
 
   let { path, url } = useRouteMatch();
 
@@ -33,7 +33,7 @@ const Home = ({userFetchLogout}) => {
     <Router>
       <Sidebar url={url}/>
     <Layout>
-      <Header logout={logout}/>
+      <Header logout={logout} currentUser={currentUser}/>
       <Content style={{ margin: '24px 16px 0' }}>
         <Switch>
           <Route exact path={path}>
@@ -50,7 +50,6 @@ const Home = ({userFetchLogout}) => {
           </Route>
         </Switch>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
     </Layout>
     </Router>
   </Layout>
