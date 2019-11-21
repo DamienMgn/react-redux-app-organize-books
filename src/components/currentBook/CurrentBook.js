@@ -2,6 +2,9 @@ import React, { Component }from 'react'
 
 import { connect } from 'react-redux'
 
+import {
+    Link,
+  } from "react-router-dom";
 
 class CurrentBook extends Component {
 
@@ -54,6 +57,7 @@ class CurrentBook extends Component {
 
         return (
             <div>
+                <Link to={`/rechercher`}>Retour</Link>
                 {this.displayBook()}
             </div>
         );

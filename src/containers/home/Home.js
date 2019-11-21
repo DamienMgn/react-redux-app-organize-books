@@ -7,7 +7,7 @@ import SearchPage from '../search/SearchPage'
 import CurrentBook from '../../components/currentBook/CurrentBook'
 
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   useRouteMatch,
