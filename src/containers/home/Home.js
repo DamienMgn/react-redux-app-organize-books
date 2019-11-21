@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 
 import Header from '../../components/header/Header'
 import Sidebar from '../../components/sidebar/Sidebar'
-import SearchPage from '../../containers/search/SearchPage'
+import SearchPage from '../search/SearchPage'
+import CurrentBook from '../../components/currentBook/CurrentBook'
 
 import {
   HashRouter as Router,
   Switch,
   Route,
-  useRouteMatch
+  useRouteMatch,
 } from "react-router-dom";
 
 import { userFetchLogout } from '../../redux/actions/authActions'
@@ -37,6 +38,9 @@ const Home = ({userFetchLogout, currentUser}) => {
       <Content style={{ margin: '24px 16px 0' }}>
         <Switch>
           <Route exact path={path}>
+            <h1>Accueil</h1>
+          </Route>
+          <Route exact path={`${path}rechercher`}>
             <SearchPage />
           </Route>
           <Route path={`${path}bibliotheque`}>
@@ -48,6 +52,7 @@ const Home = ({userFetchLogout, currentUser}) => {
           <Route path={`${path}wish-list`}>
             <h1>Wish List</h1>
           </Route>
+          <Route path={`${path}rechercher/:book_id`} component={CurrentBook} />
         </Switch>
       </Content>
     </Layout>
@@ -56,8 +61,9 @@ const Home = ({userFetchLogout, currentUser}) => {
   );
 }
 
+
 const mapStateToProps = state => ({
-    currentUser: state.user
+    currentUser: state.auth.user
 })
 
 const mapDispatchToProps = dispatch => ({

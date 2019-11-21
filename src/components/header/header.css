@@ -12,3 +12,11 @@
     align-self: flex-end;
     margin-right: 3rem;
 }
+
+.ant-dropdown-link {
+    color: #1A2C3E;
+}
+
+.ant-dropdown-link:hover {
+    color: #1A2C3E
+}

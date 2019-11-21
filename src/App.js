@@ -53,8 +53,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  isLoading: state.isLoading,
-  currentUser: state.user
+  isLoading: state.auth.isLoading,
+  currentUser: state.auth.user
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

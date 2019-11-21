@@ -1,7 +1,12 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk';
 
 import AuthReducer from './reducers/authReducer'
+import BooksReducer from './reducers/booksReducer'
 
+const reducer = combineReducers({auth: AuthReducer, books: BooksReducer})
 
-export default createStore(AuthReducer, applyMiddleware(thunk))
+const store = createStore(reducer, applyMiddleware(thunk))
+export default store
+
+console.log(store.getState())

@@ -28,7 +28,7 @@ const PrivateRoute = ({ currentUser, children, ...rest }) => {
 
 const mapStateToProps = state => {
     return {
-        currentUser: state.user
+        currentUser: state.auth.user
     }
 }
 

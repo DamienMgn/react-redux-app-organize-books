@@ -22,6 +22,12 @@ const Sidebar = ({url}) => {
         <Menu.Item key="4">
           <Link to={`${url}`}>
             <Icon type="user" />
+            <span className="nav-text">Accueil</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="5">
+          <Link to={`${url}rechercher`}>
+            <Icon type="user" />
             <span className="nav-text">Rechercher</span>
           </Link>
         </Menu.Item>

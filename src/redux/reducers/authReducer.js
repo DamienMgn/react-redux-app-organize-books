@@ -3,17 +3,20 @@ const initState = {
 };
 
 const AuthReducer = (state = initState, action) => {
+
+  let nextState = state
+
     switch (action.type) {
         case 'LOGIN_USER':
-          return {...state, user: action.payload}
+          return {...nextState, user: action.payload}
         case 'REGISTER_USER':
-          return {...state, isRegistred: true}
+          return {...nextState, isRegistred: true}
         case 'LOGOUT_USER':
-          return {...state, user: null, isRegistred: false}
+          return {...nextState, user: null, isRegistred: false}
         case 'IS_LOGGED':
-          return {...state, user: action.payload, isLoading: false}
+          return {...nextState, user: action.payload, isLoading: false}
         default:
-          return state;
+          return nextState;
     }
  }
 

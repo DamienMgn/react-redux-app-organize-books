@@ -1,21 +1,27 @@
-import React from 'react';
+import React from 'react'
+
+import { Link, useRouteMatch } from 'react-router-dom'
 
 import './book-template.css'
 
-import image from '../../images/sign-books-img-2.jpeg'
-
 const BookTemplate = ({currentBook}) => {
 
+  let { url } = useRouteMatch();
+
   return (
-    <div className="book-template">
-      <img className="book-template-cover" src={image} alt=""/>
-      <div className="book-template-information">
-        <h3>Author</h3>
-        <h4>{currentBook.volumeInfo !== undefined ? currentBook.volumeInfo.title : null}</h4>
-        <span>19/06/2019</span>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis eaque nisi non quibusdam architecto aliquid? Numquam distinctio dolorem consequatur possimus labore et! Atque nostrum quaerat facilis similique ipsa eos ducimus.</p>
+    <Link className="book-template" to={`${url}/${currentBook.id}`}>
+      {currentBook.volumeInfo.imageLinks !== undefined ? 
+        <img className="book-template-cover" src={currentBook.volumeInfo.imageLinks.thumbnail} alt=""/> :
+        <div className="book-template-cover"></div> }
+      <div className="book-template-informations">
+        <ul className="book-template-informations-authors-list">
+          {currentBook.volumeInfo.authors !== undefined ? currentBook.volumeInfo.authors.map(author => <li key={author}><h3>{author}</h3></li>) : null}
+        </ul>
+        <h4>{currentBook.volumeInfo.title}</h4>
+        <span>{currentBook.volumeInfo.publishedDate}</span>
+        <p>{currentBook.volumeInfo.description !== undefined ? currentBook.volumeInfo.description.substring(0, 200) + '...' : null}</p>
       </div>
-    </div>
+    </Link>
   );
 }
 
