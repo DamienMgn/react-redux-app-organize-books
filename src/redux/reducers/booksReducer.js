@@ -1,6 +1,7 @@
 const initState = {
     isLoading: false,
-    currentBooks: []
+    currentBooks: [],
+    userBooks: []
   };
   
   const BooksReducer = (state = initState, action) => {
@@ -12,6 +13,11 @@ const initState = {
             return {...nextState, currentBooks: action.payload}
           case 'IS_LOADING':
             return {...nextState, isLoading: !nextState.isLoading}
+          case 'GET_BOOKS':
+              return {...nextState, userBooks: action.payload}
+          case 'ADD_BOOKS':
+              let userBooks = [...nextState.userBooks, action.payload]
+              return {...nextState, userBooks}
           default:
             return state;
       }

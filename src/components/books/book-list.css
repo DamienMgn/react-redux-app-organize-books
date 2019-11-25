@@ -1,16 +1,19 @@
-.book-template {
+.book-list {
     display: flex;
+    flex-direction: column;
     margin: 0.5rem;
     background-color: #fff;
     width: 90%;
     color: #1A2C3E;
+    border: 1px solid #E9E9E9;
+    border-radius: 2px;
 }
 
-.book-template:hover {
+.book-list:hover {
     color: #1A2C3E;
 }
 
-.book-template-cover {
+.book-list-cover {
     min-height: 10rem;
     min-width: 7rem;
     max-width: 7rem;
@@ -20,15 +23,22 @@
     background-color: #EFF2F5;
 }
 
-.book-template-informations {
+.book-list-informations {
     margin-top: 2rem;
     margin-right: 2rem;
+    margin-left: 2rem;
 }
 
-.book-template-informations-authors-list {
+.book-list-informations-authors-list {
     display: flex;
 }
 
-.book-template-informations-authors-list li{
+.book-list-informations-authors-list li{
     margin-right: 1rem;
 }
+
+@media (min-width: 650px) {
+    .book-list {
+        flex-direction: row;
+    }
+  }

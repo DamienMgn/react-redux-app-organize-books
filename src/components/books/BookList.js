@@ -1,20 +1,18 @@
 import React from 'react'
 
-import { Link, useRouteMatch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import './book-template.css'
+import './book-list.css'
 
-const BookTemplate = ({currentBook}) => {
-
-  let { url } = useRouteMatch();
+const BookList = ({currentBook}) => {
 
   return (
-    <Link className="book-template" to={`${url}/${currentBook.id}`}>
+    <Link className="book-list" to={`rechercher/${currentBook.id}`}>
       {currentBook.volumeInfo.imageLinks !== undefined ? 
-        <img className="book-template-cover" src={currentBook.volumeInfo.imageLinks.thumbnail} alt=""/> :
-        <div className="book-template-cover"></div> }
-      <div className="book-template-informations">
-        <ul className="book-template-informations-authors-list">
+        <img className="book-list-cover" src={currentBook.volumeInfo.imageLinks.thumbnail} alt=""/> :
+        <div className="book-list-cover"></div> }
+      <div className="book-list-informations">
+        <ul className="book-list-informations-authors-list">
           {currentBook.volumeInfo.authors !== undefined ? currentBook.volumeInfo.authors.map(author => <li key={author}><h3>{author}</h3></li>) : null}
         </ul>
         <h4>{currentBook.volumeInfo.title}</h4>
@@ -25,4 +23,4 @@ const BookTemplate = ({currentBook}) => {
   );
 }
 
-export default BookTemplate;
+export default BookList;

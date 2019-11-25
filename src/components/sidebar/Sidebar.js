@@ -10,7 +10,7 @@ import { Layout, Menu, Icon } from 'antd';
 
 const { Sider } = Layout;
 
-const Sidebar = ({url}) => {
+const Sidebar = () => {
 
   return (
     <Sider
@@ -20,31 +20,31 @@ const Sidebar = ({url}) => {
       <div className="logo" />
       <Menu className="sidebar-menu" theme="light" mode="inline" defaultSelectedKeys={['4']}>
         <Menu.Item key="4">
-          <Link to={`${url}`}>
+          <Link to={`/`}>
             <Icon type="user" />
             <span className="nav-text">Accueil</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="5">
-          <Link to={`${url}rechercher`}>
+          <Link to={`/rechercher`}>
             <Icon type="user" />
             <span className="nav-text">Rechercher</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="3">
-          <Link to={`${url}bibliotheque`}>
+          <Link to={`/bibliotheque`}>
             <Icon type="video-camera" />
             <span className="nav-text">Bibliotheque</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="2">
-          <Link to={`${url}pal`}>
+          <Link to={`/pal`}>
             <Icon type="upload" />
             <span className="nav-text">Pile à lire</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="1">
-          <Link to={`${url}wish-list`}>
+          <Link to={`/wish-list`}>
             <Icon type="user" />
             <span className="nav-text">Wish List</span>
           </Link>

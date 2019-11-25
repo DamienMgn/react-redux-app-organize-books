@@ -17,11 +17,66 @@ export const searchBooks = search => {
 }
 
 
+export const getUserBooks = () => {
+    return dispatch => {
+      dispatch(isLoading())
+      axios.get('http://localhost:8000/api/get-books', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+      .then(response => {
+        let books = [];
+
+        response.data.forEach(book => {
+            books.push(JSON.parse(book.data))
+        });
+
+        dispatch(getBooks(books))
+        console.log(books)
+      })
+      .then(() => {
+          dispatch(isLoading());
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+  }
+
+
+export const addUserBook = (book, category) => {
+    return dispatch => {
+
+        book.category = category
+
+        let bodyParameters = {
+            book: book,
+         }
+
+         console.log(category)
+
+        axios.post("http://localhost:8000/api/addBook", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
+            .then((response) => {
+                console.log(response)
+            })
+            .catch(function (error) {
+              console.log(error);
+            }); 
+    }
+}
+
 export const isLoading = () => ({
     type: 'IS_LOADING'
 })
 
 export const loadBooks = (books) => ({
     type: 'LOAD_BOOKS',
+    payload: books
+})
+
+export const getBooks = (books) => ({
+    type: 'GET_BOOKS',
+    payload: books
+})
+
+export const addBook = (books) => ({
+    type: 'GET_BOOKS',
     payload: books
 })

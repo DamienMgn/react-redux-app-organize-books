@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { searchBooks } from '../../redux/actions/booksActions'
 
-import BookTemplate from '../../components/books/BookTemplate'
+import BookList from '../../components/books/BookList'
 import Loader from '../../components/loader/Loader'
 
 import { Input, Button, Form } from 'antd'
@@ -51,7 +51,7 @@ class SearchPage extends Component {
           </Form.Item>
         </Form>
           <div className="search-page-books-container">
-            {this.props.isLoading ? <Loader /> : Object.values(this.props.currentBooks).map(book => <BookTemplate key={book.id} currentBook={book}/>)}
+            {this.props.isLoading ? <Loader /> : Object.values(this.props.currentBooks).map(book => <BookList key={book.id} currentBook={book}/>)}
           </div>
       </div>
     );

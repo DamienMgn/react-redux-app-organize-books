@@ -5,12 +5,12 @@ import Header from '../../components/header/Header'
 import Sidebar from '../../components/sidebar/Sidebar'
 import SearchPage from '../search/SearchPage'
 import CurrentBook from '../../components/currentBook/CurrentBook'
+import BooksCategory from '../booksCategory/BooksCategory'
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
-  useRouteMatch,
 } from "react-router-dom";
 
 import { userFetchLogout } from '../../redux/actions/authActions'
@@ -23,8 +23,6 @@ const { Content } = Layout;
 
 const Home = ({userFetchLogout, currentUser}) => {
 
-  let { path, url } = useRouteMatch();
-
   const logout = () => {
     userFetchLogout()
   } 
@@ -32,27 +30,27 @@ const Home = ({userFetchLogout, currentUser}) => {
   return (
   <Layout className="home" theme="light">
     <Router>
-      <Sidebar url={url}/>
+      <Sidebar />
     <Layout>
       <Header logout={logout} currentUser={currentUser}/>
       <Content style={{ margin: '24px 16px 0' }}>
         <Switch>
-          <Route exact path={path}>
+          <Route exact path={'/'}>
             <h1>Accueil</h1>
           </Route>
-          <Route exact path={`${path}rechercher`}>
+          <Route exact path={`/rechercher`}>
             <SearchPage />
           </Route>
-          <Route path={`${path}bibliotheque`}>
-            <h1>bibliotheque</h1>
+          <Route path={`/bibliotheque`}>
+            <BooksCategory category={1}/>
           </Route>
-          <Route path={`${path}pal`}>
-            <h1>Pile à lire</h1>
+          <Route path={`/pal`}>
+            <BooksCategory category={2}/>
           </Route>
-          <Route path={`${path}wish-list`}>
-            <h1>Wish List</h1>
+          <Route path={`/wish-list`}>
+            <BooksCategory category={3}/>
           </Route>
-          <Route path={`${path}rechercher/:book_id`} component={CurrentBook} />
+          <Route path={`/rechercher/:book_id`} component={CurrentBook} />
         </Switch>
       </Content>
     </Layout>
