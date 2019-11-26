@@ -12,7 +12,6 @@ class BooksCategory extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: '',
     }
   }
 
@@ -20,12 +19,11 @@ class BooksCategory extends Component {
       this.props.getUserBooks()
   }
 
-
   render() {
     return (
       <div className="search-page">
           <div className="search-page-books-container">
-          {this.props.isLoading ? <Loader /> : this.props.userBooks.filter(book => book.category === this.props.category).map(book => <BookList key={book.id} currentBook={book}/>)}
+          {this.props.isLoading ? <Loader /> : this.props.userBooks.filter(book => book.category === this.props.category).map(book => <BookList history={this.props} key={book.id} currentBook={book}/>)}
           </div>
       </div>
     );

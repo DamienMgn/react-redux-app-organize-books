@@ -22,7 +22,7 @@ import 'antd/dist/antd.css';
 class App extends Component {
 
   componentDidMount = () => {
-        this.props.userFetchIsLogged()
+        this.props.userFetchIsLogged();
   }
 
   render() {

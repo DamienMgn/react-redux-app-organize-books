@@ -1,13 +1,15 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link, useRouteMatch } from 'react-router-dom'
 
 import './book-list.css'
 
 const BookList = ({currentBook}) => {
 
+  let { url } = useRouteMatch();
+
   return (
-    <Link className="book-list" to={`rechercher/${currentBook.id}`}>
+    <Link className="book-list" to={`/${currentBook.id}`}>
       {currentBook.volumeInfo.imageLinks !== undefined ? 
         <img className="book-list-cover" src={currentBook.volumeInfo.imageLinks.thumbnail} alt=""/> :
         <div className="book-list-cover"></div> }

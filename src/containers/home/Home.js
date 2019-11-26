@@ -50,7 +50,7 @@ const Home = ({userFetchLogout, currentUser}) => {
           <Route path={`/wish-list`}>
             <BooksCategory category={3}/>
           </Route>
-          <Route path={`/rechercher/:book_id`} component={CurrentBook} />
+          <Route path={`/:book_id`} component={CurrentBook} />
         </Switch>
       </Content>
     </Layout>

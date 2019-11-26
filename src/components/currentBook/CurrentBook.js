@@ -3,16 +3,13 @@ import React, { Component }from 'react'
 import { connect } from 'react-redux'
 
 import FormAddBook from './../formAddBook/FormAddBook'
-import { addUserBook } from '../../redux/actions/booksActions'
+import { addUserBook, deleteUserBook } from '../../redux/actions/booksActions'
 
+import { Link } from "react-router-dom";
 
-import {
-    Link,
-  } from "react-router-dom";
+import { Button } from 'antd'
 
-  import { Button } from 'antd'
-
-  import './current-book.css'
+import './current-book.css'
 
 class CurrentBook extends Component {
 
@@ -49,6 +46,10 @@ class CurrentBook extends Component {
         this.props.addUserBook(this.state.currentBook, category)
     }
 
+    deleteBook = () => {
+        this.props.deleteUserBook(this.state.currentBook, this.props.history)
+    }
+
     render() {
 
         const currentBook = this.state.currentBook;
@@ -64,7 +65,7 @@ class CurrentBook extends Component {
                             {currentBook.volumeInfo.imageLinks !== undefined ? 
                             <img className="current-book-cover" src={currentBook.volumeInfo.imageLinks.thumbnail} alt=""/> :
                             <div className="current-book-cover"></div> }
-                            <FormAddBook addBook={this.addBook}/>
+                            <FormAddBook addBook={this.addBook} deleteBook={this.deleteBook} />
                         </div>
                         <div className="current-book-informations">
                             <ul className="current-book-informations-authors-list">
@@ -89,7 +90,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addUserBook: (book, category) => dispatch(addUserBook(book, category))
+    addUserBook: (book, category) => dispatch(addUserBook(book, category)),
+    deleteUserBook: (book, history) => dispatch(deleteUserBook(book, history))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentBook);

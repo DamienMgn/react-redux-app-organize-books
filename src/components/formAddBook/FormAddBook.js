@@ -6,8 +6,12 @@ import './form-add-book.css'
 
 class FormAddBook extends Component {
 
-  handleClick = (category) => {
+  addBook = (category) => {
         this.props.addBook(category);
+  }
+
+  deleteBook = () => {
+        this.props.deleteBook();
   }
 
   render() {
@@ -16,24 +20,25 @@ class FormAddBook extends Component {
             <Button
               type=""
               className="search-page-button"
-              onClick={() => this.handleClick(1)}>
+              onClick={() => this.addBook(1)}>
             Biliothèque
             </Button>
             <Button
               type="primary"
               className="search-page-button"
-              onClick={() => this.handleClick(2)}>
+              onClick={() => this.addBook(2)}>
             Pile à lire
             </Button>
             <Button
               type="primary"
               className="search-page-button"
-              onClick={() => this.handleClick(3)}>
+              onClick={() => this.addBook(3)}>
             Wish list
             </Button>
             <Button
               type="danger"
-              className="search-page-button">
+              className="search-page-button"
+              onClick={() => this.deleteBook()}>
             Supprimer
             </Button>
         </div>

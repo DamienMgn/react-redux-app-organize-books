@@ -50,11 +50,35 @@ export const addUserBook = (book, category) => {
             book: book,
          }
 
-         console.log(category)
-
         axios.post("http://localhost:8000/api/addBook", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
             .then((response) => {
                 console.log(response)
+            })
+            .catch(function (error) {
+              console.log(error);
+            }); 
+    }
+}
+
+export const deleteUserBook = (book, props) => {
+    return dispatch => {
+
+        let bookCategory = book.category;
+
+        let bodyParameters = {
+            book: book,
+         }
+
+        axios.post("http://localhost:8000/api/deleteBook", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
+            .then((response) => {
+                console.log(response);
+                if (bookCategory === 1) {
+                    props.push('/bibliotheque');
+                } else if (bookCategory === 2) {
+                    props.push('/pal');
+                } else if (bookCategory === 3) {
+                    props.push('/wish-list');
+                }
             })
             .catch(function (error) {
               console.log(error);
@@ -77,6 +101,6 @@ export const getBooks = (books) => ({
 })
 
 export const addBook = (books) => ({
-    type: 'GET_BOOKS',
+    type: 'ADD_BOOK',
     payload: books
 })
