@@ -8,10 +8,6 @@ const Header = ({logout, currentUser}) => {
 
   const menu = (
     <Menu>
-      <Menu.Item key="0">
-        <a href="http://www.alipay.com/">Mon compte</a>
-      </Menu.Item>
-      <Menu.Divider />
       <Menu.Item key="3">
         <Button type="danger" onClick={() => logout()} className="header-logout-button">Deconnexion</Button>
       </Menu.Item>

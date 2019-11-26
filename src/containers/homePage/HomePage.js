@@ -35,7 +35,7 @@ const Home = ({userFetchLogout, currentUser}) => {
       <Header logout={logout} currentUser={currentUser}/>
       <Content style={{ margin: '24px 16px 0' }}>
         <Switch>
-          <Route exact path={`/rechercher`}>
+          <Route exact path={`/`}>
             <SearchPage />
           </Route>
           <Route path={`/bibliotheque`}>

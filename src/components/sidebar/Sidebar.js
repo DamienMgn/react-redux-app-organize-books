@@ -22,12 +22,6 @@ const Sidebar = () => {
         <Menu.Item key="4">
           <Link to={`/`}>
             <Icon type="user" />
-            <span className="nav-text">Accueil</span>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="5">
-          <Link to={`/rechercher`}>
-            <Icon type="user" />
             <span className="nav-text">Rechercher</span>
           </Link>
         </Menu.Item>
