@@ -5,8 +5,6 @@ import { connect } from 'react-redux'
 import FormAddBook from './../formAddBook/FormAddBook'
 import { addUserBook, deleteUserBook } from '../../redux/actions/booksActions'
 
-import { Link } from "react-router-dom";
-
 import { Button } from 'antd'
 
 import './current-book.css'
@@ -56,7 +54,7 @@ class CurrentBook extends Component {
 
         return (
             <div className="current-book">
-                <Link className="current-book-link" to={`/rechercher`}><Button type="primary">Retour</Button></Link>
+                <Button className="current-book-button" onClick={() => window.history.back()} type="primary">Retour</Button>
                 {this.state.isLoading ? 
                     <h1>Loader</h1> : 
                     (

@@ -1,12 +1,10 @@
 import React from 'react'
 
-import { Link, useRouteMatch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './book-list.css'
 
 const BookList = ({currentBook}) => {
-
-  let { url } = useRouteMatch();
 
   return (
     <Link className="book-list" to={`/${currentBook.id}`}>

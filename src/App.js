@@ -7,12 +7,13 @@ import {
   BrowserRouter as Router,
   Switch,
 } from "react-router-dom";
+
 import PrivateRoute from './components/PrivateRoute'
 import PrivateRouteAuth from './components/PrivateRouteAuth'
 
 import Login from './containers/sign/login/Login'
 import Register from './containers/sign/register/Register'
-import Home from './containers/home/Home'
+import HomePage from './containers/homePage/HomePage'
 import Loader from './components/loader/Loader'
 
 import './style/App.css';
@@ -33,7 +34,7 @@ class App extends Component {
           ) : (
             <Switch>
               <PrivateRoute exact path="/">
-                <Home />
+                <HomePage />
               </PrivateRoute>
               <PrivateRouteAuth path="/login">
                 <Login />

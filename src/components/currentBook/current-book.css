@@ -38,7 +38,7 @@
     text-align: justify;
 }
 
-.current-book-link {
+.current-book-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +46,7 @@
     width: 4rem;
 }
 
-.current-book-link:hover {
+.current-book-button:hover {
     color: #fff;
     transform: scale(1.01)
 }

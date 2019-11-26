@@ -72,13 +72,7 @@ export const deleteUserBook = (book, props) => {
         axios.post("http://localhost:8000/api/deleteBook", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
             .then((response) => {
                 console.log(response);
-                if (bookCategory === 1) {
-                    props.push('/bibliotheque');
-                } else if (bookCategory === 2) {
-                    props.push('/pal');
-                } else if (bookCategory === 3) {
-                    props.push('/wish-list');
-                }
+                window.history.back();
             })
             .catch(function (error) {
               console.log(error);

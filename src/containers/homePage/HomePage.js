@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import Header from '../../components/header/Header'
 import Sidebar from '../../components/sidebar/Sidebar'
-import SearchPage from '../search/SearchPage'
+import SearchPage from '../searchPage/SearchPage'
 import CurrentBook from '../../components/currentBook/CurrentBook'
-import BooksCategory from '../booksCategory/BooksCategory'
+import CategoryPage from '../categoryPage/CategoryPage'
 
 import {
   HashRouter as Router,
@@ -25,7 +25,7 @@ const Home = ({userFetchLogout, currentUser}) => {
 
   const logout = () => {
     userFetchLogout()
-  } 
+  }
 
   return (
   <Layout className="home" theme="light">
@@ -35,22 +35,19 @@ const Home = ({userFetchLogout, currentUser}) => {
       <Header logout={logout} currentUser={currentUser}/>
       <Content style={{ margin: '24px 16px 0' }}>
         <Switch>
-          <Route exact path={'/'}>
-            <h1>Accueil</h1>
-          </Route>
           <Route exact path={`/rechercher`}>
             <SearchPage />
           </Route>
           <Route path={`/bibliotheque`}>
-            <BooksCategory category={1}/>
+            <CategoryPage category={1}/>
           </Route>
           <Route path={`/pal`}>
-            <BooksCategory category={2}/>
+            <CategoryPage category={2}/>
           </Route>
           <Route path={`/wish-list`}>
-            <BooksCategory category={3}/>
+            <CategoryPage category={3}/>
           </Route>
-          <Route path={`/:book_id`} component={CurrentBook} />
+          <Route path={`/:book_id`} render={(props) => <CurrentBook {...props} lastUrl={window.location.href} />} />
         </Switch>
       </Content>
     </Layout>
