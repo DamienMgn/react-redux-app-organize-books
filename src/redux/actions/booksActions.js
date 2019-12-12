@@ -52,7 +52,14 @@ export const addUserBook = (book, category) => {
 
         axios.post("http://localhost:8000/api/addBook", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
             .then((response) => {
-                console.log(response)
+                let books = [];
+
+                response.data.forEach(book => {
+                    books.push(JSON.parse(book.data))
+                });
+        
+                dispatch(getBooks(books))
+                console.log(books)
             })
             .catch(function (error) {
               console.log(error);

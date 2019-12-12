@@ -2,7 +2,6 @@ import React, { Component }from 'react'
 
 import { connect } from 'react-redux'
 
-import FormAddBook from './../formAddBook/FormAddBook'
 import { addUserBook, deleteUserBook } from '../../redux/actions/booksActions'
 
 import { Button } from 'antd'
@@ -63,7 +62,35 @@ class CurrentBook extends Component {
                             {currentBook.volumeInfo.imageLinks !== undefined ? 
                             <img className="current-book-cover" src={currentBook.volumeInfo.imageLinks.thumbnail} alt=""/> :
                             <div className="current-book-cover"></div> }
-                            <FormAddBook addBook={this.addBook} deleteBook={this.deleteBook} />
+                                <div className="form-add-book">
+                                    <Button
+                                    type={this.props.userBooks.find(book => book.id === currentBook.id).category === 1 ? null : "primary"}
+                                    disabled={this.props.userBooks.find(book => book.id === currentBook.id).category === 1 ? true : false}
+                                    className="search-page-button"
+                                    onClick={() => this.addBook(1)}>
+                                    Biliothèque
+                                    </Button>
+                                    <Button
+                                    type={this.props.userBooks.find(book => book.id === currentBook.id).category === 2 ? null : "primary"}
+                                    disabled={this.props.userBooks.find(book => book.id === currentBook.id).category === 2 ? true : false}
+                                    className="search-page-button"
+                                    onClick={() => this.addBook(2)}>
+                                    Pile à lire
+                                    </Button>
+                                    <Button
+                                    type={this.props.userBooks.find(book => book.id === currentBook.id).category === 3 ? null : "primary"}
+                                    disabled={this.props.userBooks.find(book => book.id === currentBook.id).category === 3 ? true : false}
+                                    className="search-page-button"
+                                    onClick={() => this.addBook(3)}>
+                                    Wish list
+                                    </Button>
+                                    <Button
+                                    type="danger"
+                                    className="search-page-button"
+                                    onClick={() => this.deleteBook()}>
+                                    Supprimer
+                                    </Button>
+                                </div>
                         </div>
                         <div className="current-book-informations">
                             <ul className="current-book-informations-authors-list">
