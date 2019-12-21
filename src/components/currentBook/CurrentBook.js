@@ -52,7 +52,7 @@ class CurrentBook extends Component {
     displayButton = (categoryId, categoryName, currentBook) => {
         let userBook = this.props.userBooks.find(book => book.id === currentBook.id);
 
-        if (userBook != undefined) {
+        if (userBook !== undefined) {
             return (
                 <Button
                     type={userBook.category === categoryId ? null : "primary"}

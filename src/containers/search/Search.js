@@ -22,8 +22,10 @@ class Search extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.searchBooks(this.state.search);
-    this.setState({search: null})
+    if (this.state.search.trim().length >= 1) {
+      this.props.searchBooks(this.state.search);
+      this.setState({search: null})
+    }
   }
 
   handleChange = (event) => {

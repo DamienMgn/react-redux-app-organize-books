@@ -12,6 +12,7 @@ export const userFetchLogin = user => {
             })
             .catch(function (error) {
               dispatch(loginError(error.response.data));
+              console.log(error)
             }); 
     }
 }
@@ -29,6 +30,7 @@ export const userFetchRegister = (user, props) => {
           })
           .catch(function (error) {
             dispatch(registerError(error.response.data));
+            console.log(error)
           }); 
   }
 }
