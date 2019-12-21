@@ -8,5 +8,3 @@ const reducer = combineReducers({auth: AuthReducer, books: BooksReducer})
 
 const store = createStore(reducer, applyMiddleware(thunk))
 export default store
-
-console.log(store.getState())

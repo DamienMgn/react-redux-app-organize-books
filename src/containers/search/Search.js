@@ -11,7 +11,7 @@ import { Input, Button, Form } from 'antd'
 
 import './search-page.css'
 
-class SearchPage extends Component {
+class Search extends Component {
 
   constructor(props) {
     super(props);
@@ -69,4 +69,4 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -7,7 +7,7 @@ import { getUserBooks } from '../../redux/actions/booksActions'
 import BookList from '../../components/books/BookList'
 import Loader from '../../components/loader/Loader'
 
-class CategoryPage extends Component {
+class Category extends Component {
 
   constructor(props) {
     super(props);
@@ -41,4 +41,4 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Category);

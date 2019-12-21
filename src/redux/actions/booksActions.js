@@ -29,7 +29,6 @@ export const getUserBooks = () => {
         });
 
         dispatch(getBooks(books))
-        console.log(books)
       })
       .then(() => {
           dispatch(isLoading());
@@ -50,7 +49,7 @@ export const addUserBook = (book, category) => {
             book: book,
          }
 
-        axios.post("http://localhost:8000/api/addBook", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
+        axios.post("http://localhost:8000/api/add-book", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
             .then((response) => {
                 let books = [];
 
@@ -59,7 +58,6 @@ export const addUserBook = (book, category) => {
                 });
         
                 dispatch(getBooks(books))
-                console.log(books)
             })
             .catch(function (error) {
               console.log(error);
@@ -67,16 +65,14 @@ export const addUserBook = (book, category) => {
     }
 }
 
-export const deleteUserBook = (book, props) => {
+export const deleteUserBook = (book) => {
     return dispatch => {
-
-        let bookCategory = book.category;
 
         let bodyParameters = {
             book: book,
          }
 
-        axios.post("http://localhost:8000/api/deleteBook", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
+        axios.post("http://localhost:8000/api/delete-book", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
             .then((response) => {
                 console.log(response);
                 window.history.back();

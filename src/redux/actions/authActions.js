@@ -11,7 +11,7 @@ export const userFetchLogin = user => {
                 localStorage.setItem('token', response.data.token);
             })
             .catch(function (error) {
-              console.log(error.response);
+              dispatch(loginError(error.response.data));
             }); 
     }
 }
@@ -28,7 +28,7 @@ export const userFetchRegister = (user, props) => {
               props.push("/login");
           })
           .catch(function (error) {
-            console.log(error);
+            dispatch(registerError(error.response.data));
           }); 
   }
 }
@@ -48,7 +48,7 @@ export const userFetchLogout = () => {
 
 export const userFetchIsLogged = () => {
   return dispatch => {
-    axios.get('http://localhost:8000/api/isLogged', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+    axios.get('http://localhost:8000/api/is-logged', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
     .then(response => {
       dispatch(isLogged(response.data))
     })
@@ -76,4 +76,14 @@ export const logoutUser = () => ({
 export const isLogged = userObj => ({
   type: 'IS_LOGGED',
   payload: userObj
+})
+
+export const registerError = error => ({
+  type: 'REGISTER_ERROR',
+  payload: error
+})
+
+export const loginError = error => ({
+  type: 'LOGIN_ERROR',
+  payload: error
 })

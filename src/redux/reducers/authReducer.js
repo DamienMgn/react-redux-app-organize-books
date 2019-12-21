@@ -1,22 +1,24 @@
 const initState = {
-  isLoading: true
+  isLoading: true,
 };
 
 const AuthReducer = (state = initState, action) => {
 
-  let nextState = state
-
     switch (action.type) {
         case 'LOGIN_USER':
-          return {...nextState, user: action.payload}
+          return {...state, user: action.payload, loginError: null, registerError: null}
         case 'REGISTER_USER':
-          return {...nextState, isRegistred: true}
+          return {...state, isRegistred: true, loginError: null, registerError: null}
         case 'LOGOUT_USER':
-          return {...nextState, user: null, isRegistred: false}
+          return {...state, user: null, isRegistred: false}
         case 'IS_LOGGED':
-          return {...nextState, user: action.payload, isLoading: false}
+          return {...state, user: action.payload, isLoading: false}
+        case 'LOGIN_ERROR':
+          return {...state, loginError: action.payload}
+        case 'REGISTER_ERROR':
+          return {...state, registerError: action.payload}
         default:
-          return nextState;
+          return state;
     }
  }
 

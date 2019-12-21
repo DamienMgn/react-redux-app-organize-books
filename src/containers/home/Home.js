@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import Header from '../../components/header/Header'
 import Sidebar from '../../components/sidebar/Sidebar'
-import SearchPage from '../searchPage/SearchPage'
+import Search from '../search/Search'
 import CurrentBook from '../../components/currentBook/CurrentBook'
-import CategoryPage from '../categoryPage/CategoryPage'
+import Category from '../category/Category'
 
 import {
   HashRouter as Router,
@@ -14,6 +14,8 @@ import {
 } from "react-router-dom";
 
 import { userFetchLogout } from '../../redux/actions/authActions'
+import { restoreBooksState } from '../../redux/actions/booksActions'
+
 
 import './home.css'
 
@@ -36,16 +38,16 @@ const Home = ({userFetchLogout, currentUser}) => {
       <Content style={{ margin: '24px 16px 0' }}>
         <Switch>
           <Route exact path={`/`}>
-            <SearchPage />
+            <Search />
           </Route>
           <Route path={`/bibliotheque`}>
-            <CategoryPage category={1}/>
+            <Category category={1}/>
           </Route>
           <Route path={`/pal`}>
-            <CategoryPage category={2}/>
+            <Category category={2}/>
           </Route>
           <Route path={`/wish-list`}>
-            <CategoryPage category={3}/>
+            <Category category={3}/>
           </Route>
           <Route path={`/:book_id`} render={(props) => <CurrentBook {...props} lastUrl={window.location.href} />} />
         </Switch>
@@ -62,7 +64,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    userFetchLogout: () => dispatch(userFetchLogout())
+    userFetchLogout: () => dispatch(userFetchLogout()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -6,18 +6,16 @@ const initState = {
   
   const BooksReducer = (state = initState, action) => {
 
-    let nextState = state;
-
       switch (action.type) {
           case 'LOAD_BOOKS':
-            return {...nextState, currentBooks: action.payload}
+            return {...state, currentBooks: action.payload}
           case 'IS_LOADING':
-            return {...nextState, isLoading: !nextState.isLoading}
+            return {...state, isLoading: !state.isLoading}
           case 'GET_BOOKS':
-              return {...nextState, userBooks: action.payload}
+              return {...state, userBooks: action.payload}
           case 'ADD_BOOKS':
-              let userBooks = [...nextState.userBooks, action.payload]
-              return {...nextState, userBooks}
+              let userBooks = [...state.userBooks, action.payload]
+              return {...state, userBooks}
           default:
             return state;
       }

@@ -64,8 +64,19 @@
     flex-direction: column;
 }
 
+.form-add-book {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .form-add-book-select {
     width: 10rem;
+}
+
+.search-page-button {
+    width: 100%;
 }
 
 @media (min-width: 650px) {

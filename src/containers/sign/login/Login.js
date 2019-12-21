@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import { connect } from 'react-redux'
 import { userFetchLogin } from '../../../redux/actions/authActions'
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, Alert } from 'antd';
 import '../sign.css'
 
 
@@ -58,6 +58,7 @@ class Login extends Component {
               Or <Link to="/register">register now!</Link>
             </div>
           </Form.Item>
+          {this.props.error != null ? <Alert message={this.props.error} type="error" /> : null}
         </Form>
       </div>
     );
@@ -68,4 +69,8 @@ const mapDispatchToProps = dispatch => ({
   userFetchLogin: userInfo => dispatch(userFetchLogin(userInfo))
 })
 
-export default connect(null, mapDispatchToProps)(Login);
+const mapStateToProps = state => ({
+  error: state.auth.loginError
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

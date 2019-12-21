@@ -13,10 +13,9 @@ import PrivateRouteAuth from './components/PrivateRouteAuth'
 
 import Login from './containers/sign/login/Login'
 import Register from './containers/sign/register/Register'
-import HomePage from './containers/homePage/HomePage'
+import Home from './containers/home/Home'
 import Loader from './components/loader/Loader'
 
-import './style/App.css';
 import 'antd/dist/antd.css';
 
 
@@ -34,7 +33,7 @@ class App extends Component {
           ) : (
             <Switch>
               <PrivateRoute exact path="/">
-                <HomePage />
+                <Home />
               </PrivateRoute>
               <PrivateRouteAuth path="/login">
                 <Login />

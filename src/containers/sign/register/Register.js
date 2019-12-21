@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 
 import { connect } from 'react-redux'
 import { userFetchRegister } from '../../../redux/actions/authActions'
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, Alert } from 'antd';
 import '../sign.css'
 
 
@@ -67,6 +67,7 @@ class Register extends Component {
               Or <Link to="/login">Login!</Link>
             </div>
           </Form.Item>
+          {this.props.error != null ? <Alert message={this.props.error} type="error" /> : null}
         </Form>
       </div>
     );
@@ -77,4 +78,8 @@ const mapDispatchToProps = dispatch => ({
   userFetchRegister: (userInfo, props) => dispatch(userFetchRegister(userInfo, props))
 })
 
-export default withRouter( connect(null, mapDispatchToProps)(Register));
+const mapStateToProps = state => ({
+  error: state.auth.registerError
+})
+
+export default withRouter( connect(mapStateToProps, mapDispatchToProps)(Register));
