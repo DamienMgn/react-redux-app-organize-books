@@ -20,7 +20,7 @@ export const searchBooks = search => {
 export const getUserBooks = () => {
     return dispatch => {
       dispatch(isLoading())
-      axios.get('https://cryptic-citadel-76854.herokuapp.com/api/get-books', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+      axios.get('https://safe-harbor-85266.herokuapp.com/api/get-books', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
       .then(response => {
         let books = [];
 
@@ -47,9 +47,10 @@ export const addUserBook = (book, category) => {
 
         let bodyParameters = {
             book: book,
+            bookId: book.id
          }
 
-        axios.post("https://cryptic-citadel-76854.herokuapp.com/api/add-book", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
+        axios.post("https://safe-harbor-85266.herokuapp.com/api/add-book", bodyParameters, {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
             .then((response) => {
                 let books = [];
 
@@ -72,7 +73,7 @@ export const deleteUserBook = (book) => {
             book: book,
          }
 
-        axios.post("https://cryptic-citadel-76854.herokuapp.com/api/delete-book", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
+        axios.post("https://safe-harbor-85266.herokuapp.com/api/delete-book", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
             .then((response) => {
                 console.log(response);
                 window.history.back();
