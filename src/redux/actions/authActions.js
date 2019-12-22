@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const userFetchLogin = user => {
     return dispatch => {
-        axios.post('http://localhost:8000/api/login', {
+        axios.post('https://cryptic-citadel-76854.herokuapp.com/api/login', {
             'email': user.email,
             'password': user.password
           })
@@ -19,7 +19,7 @@ export const userFetchLogin = user => {
 
 export const userFetchRegister = (user, props) => {
   return dispatch => {
-      axios.post('http://localhost:8000/api/register', {
+      axios.post('https://cryptic-citadel-76854.herokuapp.com/api/register', {
           'name': user.name,
           'email': user.email,
           'password': user.password
@@ -37,7 +37,7 @@ export const userFetchRegister = (user, props) => {
 
 export const userFetchLogout = () => {
   return dispatch => {
-    axios.get('http://localhost:8000/api/logout', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+    axios.get('https://cryptic-citadel-76854.herokuapp.com/api/logout', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
     .then(() => {
       dispatch(logoutUser());
       localStorage.removeItem('token');
@@ -50,7 +50,7 @@ export const userFetchLogout = () => {
 
 export const userFetchIsLogged = () => {
   return dispatch => {
-    axios.get('http://localhost:8000/api/is-logged', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+    axios.get('https://cryptic-citadel-76854.herokuapp.com/api/is-logged', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
     .then(response => {
       dispatch(isLogged(response.data))
     })

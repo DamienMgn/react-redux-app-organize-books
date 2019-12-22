@@ -20,7 +20,7 @@ export const searchBooks = search => {
 export const getUserBooks = () => {
     return dispatch => {
       dispatch(isLoading())
-      axios.get('http://localhost:8000/api/get-books', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+      axios.get('https://cryptic-citadel-76854.herokuapp.com/api/get-books', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
       .then(response => {
         let books = [];
 
@@ -49,7 +49,7 @@ export const addUserBook = (book, category) => {
             book: book,
          }
 
-        axios.post("http://localhost:8000/api/add-book", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
+        axios.post("https://cryptic-citadel-76854.herokuapp.com/api/add-book", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
             .then((response) => {
                 let books = [];
 
@@ -72,7 +72,7 @@ export const deleteUserBook = (book) => {
             book: book,
          }
 
-        axios.post("http://localhost:8000/api/delete-book", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
+        axios.post("https://cryptic-citadel-76854.herokuapp.com/api/delete-book", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
             .then((response) => {
                 console.log(response);
                 window.history.back();
