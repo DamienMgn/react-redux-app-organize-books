@@ -1,11 +1,6 @@
 .sidebar-menu {
-    margin-top: 4rem !important;
+    margin-top: 6rem !important;
     border:0 !important;
-}
-
-.ant-layout-sider-children {
-    background-color: #fff;
-    border: 1px solid #E9E9E9;
 }
 
 .ant-layout-sider-zero-width-trigger {

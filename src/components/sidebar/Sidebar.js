@@ -16,9 +16,10 @@ const Sidebar = () => {
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
+      theme="dark"
     >
       <div className="logo" />
-      <Menu className="sidebar-menu" theme="light" mode="inline" defaultSelectedKeys={['4']}>
+      <Menu className="sidebar-menu" theme="dark" mode="inline" defaultSelectedKeys={['4']}>
         <Menu.Item key="4">
           <Link to={`/`}>
             <Icon type="user" />

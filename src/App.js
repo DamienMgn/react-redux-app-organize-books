@@ -8,8 +8,8 @@ import {
   Switch,
 } from "react-router-dom";
 
-import PrivateRoute from './components/PrivateRoute'
-import PrivateRouteAuth from './components/PrivateRouteAuth'
+import PrivateRoute from './utils/PrivateRoute'
+import PrivateRouteAuth from './utils/PrivateRouteAuth'
 
 import Login from './containers/sign/login/Login'
 import Register from './containers/sign/register/Register'

@@ -19,7 +19,6 @@ export const searchBooks = search => {
 
 export const getUserBooks = () => {
     return dispatch => {
-      dispatch(isLoading())
       axios.get('https://safe-harbor-85266.herokuapp.com/api/get-books', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
       .then(response => {
         let books = [];
@@ -75,7 +74,13 @@ export const deleteUserBook = (book) => {
 
         axios.post("https://safe-harbor-85266.herokuapp.com/api/delete-book", [bodyParameters], {headers: { 'Authorization' : 'Bearer '+ localStorage.getItem('token')}})
             .then((response) => {
-                console.log(response);
+                let books = [];
+
+                response.data.forEach(book => {
+                    books.push(JSON.parse(book.data))
+                });
+        
+                dispatch(getBooks(books))
                 window.history.back();
             })
             .catch(function (error) {

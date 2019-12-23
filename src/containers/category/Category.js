@@ -15,10 +15,6 @@ class Category extends Component {
     }
   }
 
-  componentDidMount() {
-      this.props.getUserBooks()
-  }
-
   render() {
     return (
       <div className="search-page">

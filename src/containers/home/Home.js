@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Header from '../../components/header/Header'
@@ -14,6 +14,8 @@ import {
 } from "react-router-dom";
 
 import { userFetchLogout } from '../../redux/actions/authActions'
+import { getUserBooks } from '../../redux/actions/booksActions'
+
 
 import './home.css'
 
@@ -21,39 +23,56 @@ import { Layout } from 'antd';
 
 const { Content } = Layout;
 
-const Home = ({userFetchLogout, currentUser}) => {
+class Home extends Component {
 
-  const logout = () => {
-    userFetchLogout()
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
   }
 
-  return (
-  <Layout className="home" theme="light">
-    <Router>
-      <Sidebar />
-    <Layout>
-      <Header logout={logout} currentUser={currentUser}/>
-      <Content style={{ margin: '24px 16px 0' }}>
-        <Switch>
-          <Route exact path={`/`}>
-            <Search />
-          </Route>
-          <Route path={`/bibliotheque`}>
-            <Category category={1}/>
-          </Route>
-          <Route path={`/pal`}>
-            <Category category={2}/>
-          </Route>
-          <Route path={`/wish-list`}>
-            <Category category={3}/>
-          </Route>
-          <Route path={`/:book_id`} render={(props) => <CurrentBook {...props} lastUrl={window.location.href} />} />
-        </Switch>
-      </Content>
-    </Layout>
-    </Router>
-  </Layout>
-  );
+  componentDidMount() {
+    setTimeout(() => {
+      this.props.getUserBooks()
+    }, 1000);
+  }
+
+  logout = () => {
+    this.props.userFetchLogout()
+  }
+
+  render() {
+
+    const {currentUser} = this.props;
+
+    return (
+      <Layout className="home" theme="light">
+        <Router>
+          <Sidebar />
+        <Layout>
+          <Header logout={this.logout} currentUser={currentUser}/>
+          <Content style={{ margin: '24px 16px 0' }}>
+            <Switch>
+              <Route exact path={`/`}>
+                <Search />
+              </Route>
+              <Route path={`/bibliotheque`}>
+                <Category category={1}/>
+              </Route>
+              <Route path={`/pal`}>
+                <Category category={2}/>
+              </Route>
+              <Route path={`/wish-list`}>
+                <Category category={3}/>
+              </Route>
+              <Route path={`/:book_id`} render={(props) => <CurrentBook {...props} lastUrl={window.location.href} />} />
+            </Switch>
+          </Content>
+        </Layout>
+        </Router>
+      </Layout>
+      );
+  }
 }
 
 
@@ -63,6 +82,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     userFetchLogout: () => dispatch(userFetchLogout()),
+    getUserBooks: () => dispatch(getUserBooks())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
