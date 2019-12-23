@@ -18,6 +18,7 @@ export const searchBooks = search => {
 
 
 export const getUserBooks = () => {
+    dispatch(isLoading())
     return dispatch => {
       axios.get('https://safe-harbor-85266.herokuapp.com/api/get-books', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
       .then(response => {

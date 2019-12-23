@@ -1,5 +1,5 @@
 const initState = {
-    isLoading: true,
+    isLoading: false,
     currentBooks: [],
     userBooks: []
   };
