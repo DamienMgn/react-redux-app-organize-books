@@ -20,6 +20,10 @@
     justify-content: center;
 }
 
+.sign-form-button {
+    width: 100%;
+}
+
 .sign-form-item {
     width: 80%;
 }
