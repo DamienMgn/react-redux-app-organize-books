@@ -58,7 +58,7 @@ export const addUserBook = (book, category) => {
                     books.push(JSON.parse(book.data))
                 });
         
-                dispatch(getBooks(books))
+                dispatch(getBooks(books));
             })
             .catch(function (error) {
               console.log(error);
@@ -81,7 +81,8 @@ export const deleteUserBook = (book) => {
                     books.push(JSON.parse(book.data))
                 });
         
-                dispatch(getBooks(books))
+                dispatch(getBooks(books));
+                window.history.back();
             })
             .catch(function (error) {
               console.log(error);
