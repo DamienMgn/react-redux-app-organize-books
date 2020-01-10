@@ -33,6 +33,10 @@ class Login extends Component {
     return (
       <div className="sign">
         <Form onSubmit={this.handleSubmit} className="sign-form" method="POST">
+          <div className="sign-form-intro">
+            <p>Cette application a été développée avec React/Redux. C'est une démo, la base de donnée est vidée régulièrement.</p>
+            <p>Image: <a href="https://unsplash.com/">Unsplash</a></p>
+          </div>
           <Form.Item className="sign-form-item">
               <Input
                 prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -46,16 +50,16 @@ class Login extends Component {
                 prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 type="password"
                 name='password'
-                placeholder="Password"
+                placeholder="Mot de passe"
                 onChange={this.handleChange}
               />
           </Form.Item>
           <Form.Item className="sign-form-item">
             <Button type="primary" htmlType="submit" className="sign-form-button">
-              Log in
+              Connexion
             </Button>
             <div>
-              Or <Link to="/register">register now!</Link>
+              Ou <Link to="/register">Créer un compte !</Link>
             </div>
           </Form.Item>
           {this.props.error != null ? <Alert message={this.props.error} type="error" /> : null}

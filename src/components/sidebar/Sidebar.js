@@ -22,25 +22,25 @@ const Sidebar = () => {
       <Menu className="sidebar-menu" theme="dark" mode="inline" defaultSelectedKeys={['4']}>
         <Menu.Item key="4">
           <Link to={`/`}>
-            <Icon type="user" />
+            <Icon type="search" />
             <span className="nav-text">Rechercher</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="3">
           <Link to={`/bibliotheque`}>
-            <Icon type="video-camera" />
+            <Icon type="book" />
             <span className="nav-text">Bibliotheque</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="2">
           <Link to={`/pal`}>
-            <Icon type="upload" />
+            <Icon type="unordered-list" />
             <span className="nav-text">Pile à lire</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="1">
           <Link to={`/wish-list`}>
-            <Icon type="user" />
+            <Icon type="bulb" />
             <span className="nav-text">Wish List</span>
           </Link>
         </Menu.Item>

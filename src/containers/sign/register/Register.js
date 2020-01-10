@@ -34,10 +34,14 @@ class Register extends Component {
     return (
       <div className="sign">
         <Form onSubmit={this.handleSubmit} className="sign-form" method="POST">
+          <div className="sign-form-intro">
+            <p>Cette application a été développée avec React/Redux. C'est une démo, la base de donnée est vidée régulièrement.</p>
+            <p>Image: <a href="https://unsplash.com/">Unsplash</a></p>
+          </div>
           <Form.Item className="sign-form-item">
               <Input
                 prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                placeholder="Username"
+                placeholder="Nom d'utilisateur"
                 name="name"
                 onChange={this.handleChange}
               />
@@ -55,16 +59,16 @@ class Register extends Component {
                 prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 type="password"
                 name='password'
-                placeholder="Password"
+                placeholder="Mot de passe"
                 onChange={this.handleChange}
               />
           </Form.Item>
           <Form.Item className="sign-form-item">
             <Button type="primary" htmlType="submit" className="sign-form-button">
-              Register
+              Enregistrer
             </Button>
             <div>
-              Or <Link to="/login">Login!</Link>
+              Ou <Link to="/login">Se connecter !</Link>
             </div>
           </Form.Item>
           {this.props.error != null ? <Alert message={this.props.error} type="error" /> : null}

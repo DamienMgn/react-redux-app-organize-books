@@ -20,6 +20,11 @@
     justify-content: center;
 }
 
+.sign-form-intro {
+    width: 75%;
+    margin-bottom: 3rem;
+}
+
 .sign-form-button {
     width: 100%;
 }
