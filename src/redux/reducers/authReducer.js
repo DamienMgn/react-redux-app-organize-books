@@ -11,6 +11,7 @@ const AuthReducer = (state = initState, action) => {
           return {...state, isRegistred: true, loginError: null, registerError: null}
         case 'LOGOUT_USER':
           return {...state, user: null, isRegistred: false}
+        // Vérifie si l'utilisateur est connecté
         case 'IS_LOGGED':
           return {...state, user: action.payload, isLoading: false}
         case 'LOGIN_ERROR':

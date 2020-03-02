@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-export const searchBooks = search => {
+
+// Recherche un livre sur l'API Google
+export const searchBook = search => {
     return dispatch => {
         dispatch(isLoading())
         axios.get('https://www.googleapis.com/books/v1/volumes?q=' + search)
@@ -16,7 +18,7 @@ export const searchBooks = search => {
     }
 }
 
-
+// Obtenir les livres de l'utilisateur
 export const getUserBooks = () => {
     return dispatch => {
         dispatch(isLoading())
@@ -27,7 +29,6 @@ export const getUserBooks = () => {
         response.data.forEach(book => {
             books.push(JSON.parse(book.data))
         });
-
         dispatch(getBooks(books))
       })
       .then(() => {
@@ -39,7 +40,7 @@ export const getUserBooks = () => {
     }
   }
 
-
+// Ajouter un livre
 export const addUserBook = (book, category) => {
     return dispatch => {
 
@@ -62,10 +63,11 @@ export const addUserBook = (book, category) => {
             })
             .catch(function (error) {
               console.log(error);
-            }); 
+        }); 
     }
 }
 
+// Supprimer un livre
 export const deleteUserBook = (book) => {
     return dispatch => {
 
@@ -80,15 +82,16 @@ export const deleteUserBook = (book) => {
                 response.data.forEach(book => {
                     books.push(JSON.parse(book.data))
                 });
-        
                 dispatch(getBooks(books));
                 window.history.back();
             })
             .catch(function (error) {
               console.log(error);
-            }); 
+        }); 
     }
 }
+
+// ACTIONS
 
 export const isLoading = () => ({
     type: 'IS_LOADING'

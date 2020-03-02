@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import { searchBooks } from '../../redux/actions/booksActions'
+import { searchBook } from '../../redux/actions/booksActions'
 
 import BookList from '../../components/books/BookList'
 import Loader from '../../components/loader/Loader'
@@ -20,14 +20,16 @@ class Search extends Component {
     }
   }
 
+  // Soumission du formulaire
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.state.search.trim().length >= 1) {
-      this.props.searchBooks(this.state.search);
+      this.props.searchBook(this.state.search);
       this.setState({search: null})
     }
   }
 
+  // Mise à jour du state au changement
   handleChange = (event) => {
     this.setState({search: event.target.value})
   }
@@ -66,7 +68,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  searchBooks: search => dispatch(searchBooks(search))
+  searchBook: search => dispatch(searchBook(search))
 })
 
 

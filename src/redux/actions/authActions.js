@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+
+// Se connecter
 export const userFetchLogin = user => {
     return dispatch => {
         axios.post('https://safe-harbor-85266.herokuapp.com/api/login', {
@@ -13,10 +15,11 @@ export const userFetchLogin = user => {
             .catch(function (error) {
               dispatch(loginError(error.response.data));
               console.log(error)
-            }); 
+        }); 
     }
 }
 
+// S'enregistrer
 export const userFetchRegister = (user, props) => {
   return dispatch => {
       axios.post('https://safe-harbor-85266.herokuapp.com/api/register', {
@@ -35,6 +38,7 @@ export const userFetchRegister = (user, props) => {
   }
 }
 
+// Se déconnecter
 export const userFetchLogout = () => {
   return dispatch => {
     axios.get('https://safe-harbor-85266.herokuapp.com/api/logout', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
@@ -48,6 +52,7 @@ export const userFetchLogout = () => {
   }
 }
 
+// Vérifier si l'utilisateur est connecté
 export const userFetchIsLogged = () => {
   return dispatch => {
     axios.get('https://safe-harbor-85266.herokuapp.com/api/is-logged', {headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
@@ -60,6 +65,9 @@ export const userFetchIsLogged = () => {
     });
   }
 }
+
+
+// ACTIONS
 
 export const loginUser = userObj => ({
     type: 'LOGIN_USER',

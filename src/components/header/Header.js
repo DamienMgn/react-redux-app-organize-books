@@ -6,6 +6,7 @@ import './header.css'
 
 const Header = ({logout, currentUser}) => {
 
+  // Dropdown Menu
   const menu = (
     <Menu>
       <Menu.Item key="3">

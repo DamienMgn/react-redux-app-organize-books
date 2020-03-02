@@ -22,7 +22,8 @@ import 'antd/dist/antd.css';
 class App extends Component {
 
   componentDidMount = () => {
-        this.props.userFetchIsLogged();
+    // On vérifie si l'utilisateur est connecté
+      this.props.userFetchIsLogged();
   }
 
   render() {

@@ -49,6 +49,7 @@ class CurrentBook extends Component {
         this.props.deleteUserBook(this.state.currentBook, this.props.history)
     }
 
+    // Affichage boutons 
     displayButton = (categoryId, categoryName, currentBook) => {
         let userBook = this.props.userBooks.find(book => book.id === currentBook.id);
 
@@ -74,6 +75,7 @@ class CurrentBook extends Component {
         }
     }
 
+    // Affichage des livres si currentBook existe
     displayBook () {
 
         const currentBook = this.state.currentBook;
